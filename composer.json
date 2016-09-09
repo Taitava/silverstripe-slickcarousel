@@ -1,0 +1,24 @@
+{
+  "name": "taitava/silverstripe-slick-carousel",
+  "description": "A SilverStripe wrapper for Slick carousel: \"the last carousel you'll ever need\".",
+  "type": "silverstripe-module",
+  "license": "MIT",
+  "require": {
+    "silverstripe/framework": "~3.1",
+    "silverstripe/cms": "~3.1",
+    "unclecheese/display-logic:": "*"
+  },
+  "keywords": ["silverstripe","email","hide","hide email","cloak","spam","bot"],
+  "authors": [{
+    "name": "Jarkko Linnanvirta",
+    "email": "posti@taitavasti.fi",
+    "homepage": "http://taitavasti.fi",
+    "role": "Developer"
+  }],
+  "suggest": {
+    "undefinedoffset/sortablegridfield": "Enables changing the order of carousel slides. No need to configure anything extra after installing this."
+  },
+  "extra": {
+    "installer-name": "slickcarousel"
+  }
+}
