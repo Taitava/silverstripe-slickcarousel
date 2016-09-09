@@ -1,5 +1,5 @@
 {
-  "name": "taitava/silverstripe-slick-carousel",
+  "name": "taitava/silverstripe-slickcarousel",
   "description": "A SilverStripe wrapper for Slick carousel: \"the last carousel you'll ever need\".",
   "type": "silverstripe-module",
   "license": "MIT",
