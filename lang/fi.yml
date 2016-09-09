@@ -1,0 +1,18 @@
+fi:
+  Carousel:
+    CMSTabName:       'Karuselli'
+
+  CarouselSlide:
+    Content:          'Vapaamuotoinen sisältö'
+    PlainContent:     'Vapaamuotoinen sisältö'
+    Link:             'Linkki'
+    LinkURL:          'Linkin osoite'
+    LinkPageID:       'Linkki sivulle'
+    LinkTargetBlank:  'Avaa uuteen välilehteen'
+    LinkType:         'Linkki'
+    LinkTypeNoLink:   'Ei linkkiä'
+    LinkTypePage:     'Linkki sivulle'
+    LinkTypeURL:      'Linkki ulkoiseen osoitteeseen'
+    Image:            'Kuva'
+    UseCustomContent: 'Vapaamuotoinen sisältö'
+    UseCustomContentDescription: 'Käytä tätä syöttääksesi mitä tahansa sisältöä karuselliin. Tätä voidaan käyttää kuvan lisänä, tai tätä käytettäessä kuva voidaan jättää kokonaan pois.'

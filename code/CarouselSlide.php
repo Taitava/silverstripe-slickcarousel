@@ -28,11 +28,21 @@ class CarouselSlide extends DataObject
 		'ContainerPage'		=> 'SiteTree', //This must become AFTER 'LinkPage'! Otherwise the GridField defined in CarouselExtension::updateCMSFields() will incorrectly use 'LinkPage' for the relation instead of 'ContainerPage'.
 	);
 	
-	private static $field_labels = array(
-		'Content'		=> 'Custom content',
-		'PlainContent'		=> 'Custom content',
-		'Image.CMSThumbnail'	=> 'Image',
-	);
+	public function fieldLabels($includerelations = true)
+	{
+		$labels = parent::fieldLabels($includerelations);
+		
+		return $labels + array(
+			'Content'		=> _t('CarouselSlide.Content', 'Custom content'),
+			'PlainContent'		=> _t('CarouselSlide.Content', 'Custom content'),
+			'Image'			=> _t('CarouselSlide.Image', 'Image'),
+			'Image.CMSThumbnail'	=> _t('CarouselSlide.Image', 'Image'),
+			'Link'			=> _t('CarouselSlide.Link', 'Link'),
+			'LinkURL'		=> _t('CarouselSlide.LinkURL', 'Link URL'),
+			'LinkPageID'		=> _t('CarouselSlide.LinkPageID', 'Link page'),
+			'LinkTargetBlank'	=> _t('CarouselSlide.LinkTargetBlank', 'Open the link in a new tab'),
+		);
+	}
 	
 	private static $summary_fields = array(
 		'Image.CMSThumbnail',
@@ -80,15 +90,15 @@ class CarouselSlide extends DataObject
 		
 		//HTML content field
 		$fields->addFieldToTab('Root.Main', $checkbox = new CheckboxField('UseCustomContent', _t('CarouselSlide.UseCustomContent', 'Use custom content')));
-		$checkbox->setDescription('Use this to input any kind of HTML content inside the slide. This can be used alongside with an image, or you can leave out the image and use only the custom content.');
+		$checkbox->setDescription(_t('CarouselSlide.UseCustomContentDescription','Use this to input any kind of HTML content inside the slide. This can be used alongside with an image, or you can leave out the image and use only the custom content.'));
 		$fields->dataFieldByName('Content')->displayIf('UseCustomContent')->isChecked();
 		
 		//Link fields
 		$current_link_type = ($this->owner->LinkPageID ? 1 : ($this->owner->LinkURL ? 2 : 0));
 		$link_options = array(
-			0 => 'No link',
-			1 => 'Link to a page',
-			2 => 'Link to a custom URL',
+			0 => _t('CarouselSlide.LinkTypeNoLink',	'No link'),
+			1 => _t('CarouselSlide.LinkTypePage',	'Link to a page'),
+			2 => _t('CarouselSlide.LinkTypeURL',	'Link to a custom URL'),
 		);
 		$fields->addFieldToTab('Root.Main', $link_option_group = new OptionsetField('LinkType', _t('CarouselSlide.LinkType', 'Link'), $link_options, $current_link_type));
 		$fields->dataFieldByName('LinkURL')->displayIf('LinkType')->isEqualTo(2);
@@ -105,6 +115,13 @@ class CarouselSlide extends DataObject
 			'LinkPageID',
 			'LinkTargetBlank',
 		));
+		
+		//Fix field translations (I don't know why SilverStripe does not translate them without this)
+		$fix_field_titles = array('Image', 'Content', 'LinkURL', 'LinkPageID', 'LinkTargetBlank');
+		foreach ($fix_field_titles as $field_name)
+		{
+			$fields->dataFieldByName($field_name)->setTitle($this->fieldLabel($field_name));
+		}
 		
 		return $fields;
 	}
