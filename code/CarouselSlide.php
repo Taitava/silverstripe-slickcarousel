@@ -94,7 +94,7 @@ class CarouselSlide extends DataObject
 		$fields->dataFieldByName('Content')->displayIf('UseCustomContent')->isChecked();
 		
 		//Link fields
-		$current_link_type = ($this->owner->LinkPageID ? 1 : ($this->owner->LinkURL ? 2 : 0));
+		$current_link_type = ($this->LinkPageID ? 1 : ($this->LinkURL ? 2 : 0));
 		$link_options = array(
 			0 => _t('CarouselSlide.LinkTypeNoLink',	'No link'),
 			1 => _t('CarouselSlide.LinkTypePage',	'Link to a page'),
