@@ -7,7 +7,31 @@ class Carousel extends Object
 	 *
 	 * @conf int
 	 */
-	private static $cms_slides_per_page	= 50;
+	private static $cms_slides_per_page		= 50;
+	
+	/**
+	 * Where to place the slide's image inside the carousel slide <div> element:
+	 * - 'background': the image will be used as the <div>'s background-image.
+	 * - 'before-content': the image will be used as an <img> element before the HTML contained in the Content field.
+	 * - 'after-content': the image will be used as an <img> element after the HTML contained in the Content field.
+	 *
+	 * @conf string
+	 */
+	private static $image_placement			= 'background';
+	
+	
+	/**
+	 * Whether or not to set the slide <div> element's width and/or height to be the same as the image's width and/or
+	 * height. Can be useful when $image_placement is 'background' and you are not using constant dimensions that you
+	 * define in your CSS. Possible values:
+	 * - false
+	 * - 'width-only'
+	 * - 'height-only'
+	 * - true (both width and height)
+	 *
+	 * @conf bool
+	 */
+	private static $use_image_dimensions		= false;
 	
 	/**
 	 * Options to pass to the Slick jQuery plugin during initialization. With these you can greatly affect the behaviour
@@ -19,7 +43,7 @@ class Carousel extends Object
 	 *
 	 * @conf array
 	 */
-	private static $slick_options		= array();
+	private static $slick_options			= array();
 	
 	
 	public static function Requirements()
@@ -35,6 +59,33 @@ class Carousel extends Object
 		", 'Define Slick options only once, please :).'); //The last parameter is a unique script ID. It does not appear anywhere in the frontend or backend.
 	}
 	
+	/**
+	 * Tells whether the slide's image's width should be injected to the slide <div>'s HTML style attribute.
+	 *
+	 * @return bool
+	 */
+	public static function UseImageWidth()
+	{
+		$use_image_dimensions = self::config()->get('use_image_dimensions');
+		return $use_image_dimensions === true || $use_image_dimensions == 'width-only';
+	}
+	
+	/**
+	 * Tells whether the slide's image's height should be injected to the slide <div>'s HTML style attribute.
+	 *
+	 * @return bool
+	 */
+	public static function UseImageHeight()
+	{
+		$use_image_dimensions = self::config()->get('use_image_dimensions');
+		return $use_image_dimensions === true || $use_image_dimensions == 'height-only';
+	}
+	
+	/**
+	 * Exports Slim specific settings from YAML to JavaScript so that they can be easily used when initialising Slick.
+	 *
+	 * @return string
+	 */
 	private static function options2js()
 	{
 		return Convert::array2json(self::config()->get('slick_options'));

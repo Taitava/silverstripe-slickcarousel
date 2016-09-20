@@ -5,7 +5,9 @@
  *
  * @method SiteTree ContainerPage Returns a SiteTree object in which this slide belongs to. This is mandatory.
  * @method SiteTree LinkPage Returns a SiteTree object used as a clickable link target in the frontend. This can be null.
+ * @method Image Image
  *
+ * @property int ImageID
  * @property int $ContainerPageID A SiteTree ID to which this slide belongs to.
  * @property string $Content
  * @property int $LinkPageID A SiteTree ID used as a clickable link target in the frontend.
@@ -125,4 +127,26 @@ class CarouselSlide extends DataObject
 		
 		return $fields;
 	}
+	
+	
+	/**
+	 * Generates the content for the slide's <div style=""> attribute. Does not return the 'style=""' part, only the
+	 * value. This way more style rules can be added in the template after or before these rules.
+	 *
+	 * @return string
+	 */
+	public function StyleAttribute()
+	{
+		$styles = array();
+		if (Carousel::config()->get('image_placement') == 'background') $styles[] = "background-image: url('".Convert::raw2xml($this->Image()->Link())."');";
+		if (Carousel::UseImageWidth()) $styles[] = 'width: '.$this->Image()->getWidth().'px;';
+		if (Carousel::UseImageHeight()) $styles[] = 'height: '.$this->Image()->getHeight().'px;';
+		return implode(' ', $styles);
+	}
+	
+	public function ImagePlacement()
+	{
+		return Carousel::config()->get('image_placement');
+	}
+	
 }
