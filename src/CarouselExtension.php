@@ -53,7 +53,7 @@ class CarouselExtension extends DataExtension
 	public function Carousel()
 	{
 		self::InitCarousel();
-		return $this->owner->renderWith('Carousel');
+		return $this->owner->renderWith('Taitava\SlickCarousel\Carousel');
 	}
 	
 	/**

@@ -88,7 +88,7 @@ class CarouselSlide extends DataObject
 	
 	public function forTemplate()
 	{
-		return $this->renderWith('CarouselSlide');
+		return $this->renderWith('Taitava\SlickCarousel\CarouselSlide');
 	}
 	
 	public function getCMSFields()
