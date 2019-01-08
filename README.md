@@ -1,13 +1,21 @@
 # silverstripe-slickcarousel
 A Slick carousel wrapper for SilverStripe. See: http://kenwheeler.github.io/slick/
 
+## Requirements
+
+- SilverStripe 4 (use this module's release line 2.0 and onwards)
+- Or: SilverStripe 3 (use this module's release line 1.x)
+- [unclecheese/display-logic module](https://github.com/unclecheese/silverstripe-display-logic) (any version that is compatible with SS4/SS3)
+
+## Usage
+
 THE README IS COMING! If you need it, please raise an issue about the readme, and I will hurry with it. But don't be afraid, the module is quite easy to use. The simplest setup contains just a few steps:
 
-1. Extend your `Page` class with CarouselExtension (or SiteTree class or any other class derived from SiteTree). Create a new file `app/_config/slickcarousel.yml` and put this content there:
+1. Extend your `Page` class with Taitava\SlickCarousel\CarouselExtension (or SiteTree class or any other class derived from SiteTree). Create a new file `app/_config/slickcarousel.yml` and put this content there:
 ```YAML
 Page:
   extensions:
-    - CarouselExtension
+    - Taitava\SlickCarousel\CarouselExtension
 ```
 2. Put $Carousel inside your Page.ss (or similar) layout template.
 3. Run /dev/build?flush=all
