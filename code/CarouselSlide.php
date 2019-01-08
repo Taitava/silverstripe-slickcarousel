@@ -95,6 +95,7 @@ class CarouselSlide extends DataObject
 		$fields->addFieldToTab('Root.Main', $checkbox = new CheckboxField('UseCustomContent', _t('CarouselSlide.UseCustomContent', 'Use custom content'), $custom_content_used));
 		$checkbox->setDescription(_t('CarouselSlide.UseCustomContentDescription','Use this to input any kind of HTML content inside the slide. This can be used alongside with an image, or you can leave out the image and use only the custom content.'));
 		$fields->dataFieldByName('Content')->displayIf('UseCustomContent')->isChecked();
+		$checkbox->addExtraClass('no-change-track'); //Do not alert about 'unsaved work' if the only change in the editor was to check/uncheck this field.
 		
 		//Link fields
 		$current_link_type = ($this->LinkPageID ? 1 : ($this->LinkURL ? 2 : 0));
