@@ -34,7 +34,7 @@ class CarouselSlide extends DataObject
 	{
 		$labels = parent::fieldLabels($includerelations);
 		
-		return $labels + array(
+		return array_merge($labels, array(
 			'Content'		=> _t('CarouselSlide.Content', 'Custom content'),
 			'PlainContent'		=> _t('CarouselSlide.Content', 'Custom content'),
 			'Image'			=> _t('CarouselSlide.Image', 'Image'),
@@ -43,7 +43,7 @@ class CarouselSlide extends DataObject
 			'LinkURL'		=> _t('CarouselSlide.LinkURL', 'Link URL'),
 			'LinkPageID'		=> _t('CarouselSlide.LinkPageID', 'Link page'),
 			'LinkTargetBlank'	=> _t('CarouselSlide.LinkTargetBlank', 'Open the link in a new tab'),
-		);
+		));
 	}
 	
 	private static $summary_fields = array(

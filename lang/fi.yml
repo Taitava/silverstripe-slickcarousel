@@ -3,6 +3,8 @@ fi:
     CMSTabName:       'Karuselli'
 
   CarouselSlide:
+    SINGULARNAME:     'Sisältö'
+    PLURALNAME:       'Sisällöt'
     Content:          'Vapaamuotoinen sisältö'
     PlainContent:     'Vapaamuotoinen sisältö'
     Link:             'Linkki'
