@@ -1,5 +1,14 @@
 <?php
 
+namespace Taitava\SlickCarousel;
+
+use SilverStripe\Assets\Image;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Core\Convert;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\OptionsetField;
+use SilverStripe\ORM\DataObject;
+
 /**
  * Class CarouselSlide
  *
@@ -17,6 +26,8 @@
  */
 class CarouselSlide extends DataObject
 {
+	private static $table_name = 'CarouselSlide';
+	
 	private static $db = array(
 		'Content'		=> 'HTMLText',
 		'LinkURL'		=> 'Varchar(255)',
@@ -25,9 +36,9 @@ class CarouselSlide extends DataObject
 	);
 	
 	private static $has_one = array(
-		'Image' 		=> 'Image',
-		'LinkPage'		=> 'SiteTree',
-		'ContainerPage'		=> 'SiteTree', //This must become AFTER 'LinkPage'! Otherwise the GridField defined in CarouselExtension::updateCMSFields() will incorrectly use 'LinkPage' for the relation instead of 'ContainerPage'.
+		'Image' 		=> Image::class,
+		'LinkPage'		=> SiteTree::class,
+		'ContainerPage'		=> SiteTree::class, //This must become AFTER 'LinkPage'! Otherwise the GridField defined in CarouselExtension::updateCMSFields() will incorrectly use 'LinkPage' for the relation instead of 'ContainerPage'.
 	);
 	
 	public function fieldLabels($includerelations = true)

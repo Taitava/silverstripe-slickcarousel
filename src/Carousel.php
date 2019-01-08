@@ -1,5 +1,10 @@
 <?php
 
+namespace Taitava\SlickCarousel;
+
+use SilverStripe\Core\Convert;
+use SilverStripe\View\Requirements;
+
 class Carousel extends Object
 {
 	/**

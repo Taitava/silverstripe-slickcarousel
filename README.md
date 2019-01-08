@@ -3,7 +3,7 @@ A Slick carousel wrapper for SilverStripe. See: http://kenwheeler.github.io/slic
 
 THE README IS COMING! If you need it, please raise an issue about the readme, and I will hurry with it. But don't be afraid, the module is quite easy to use. The simplest setup contains just a few steps:
 
-1. Extend your `Page` class with CarouselExtension (or SiteTree class or any other class derived from SiteTree). Create a new file `mysite/_config/slickcarousel.yml` and put this content there:
+1. Extend your `Page` class with CarouselExtension (or SiteTree class or any other class derived from SiteTree). Create a new file `app/_config/slickcarousel.yml` and put this content there:
 ```YAML
 Page:
   extensions:
@@ -16,7 +16,7 @@ Page:
 Slick carousel options can be configured via YAML:
 
 ```YAML
-Carousel:
+Taitava\SlickCarousel\Carousel:
   slick_options:
     autoplay: true
 ```
@@ -28,10 +28,10 @@ The module is still under development, so ~~I don't consider it stable yet~~. (U
 
 ## Optional settings
 
-You can tweak these settings in `mysite/_config/slickcarousel.yml`. Here are the options are listed with default values.
+You can tweak these settings in `app/_config/slickcarousel.yml`. Here are the options are listed with default values.
 
 ```
-Carousel:
+Taitava\SlickCarousel\Carousel:
   cms_slides_per_page: 50        #How many slides to list in a single page in the Carousel tab in the CMS.
   
   image_placement: background    #Where to place the slide's image inside the carousel slide <div> element:

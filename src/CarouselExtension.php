@@ -1,5 +1,17 @@
 <?php
 
+namespace Taitava\SlickCarousel;
+
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\Tab;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 
 /**
  * Class CarouselExtension
@@ -11,7 +23,7 @@
 class CarouselExtension extends DataExtension
 {
 	private static $has_many = array(
-		'CarouselSlides' => 'CarouselSlide',
+		'CarouselSlides' => CarouselSlide::class,
 	);
 	
 	public function updateCMSFields(FieldList $fields)
@@ -19,11 +31,12 @@ class CarouselExtension extends DataExtension
 		$fields->addFieldToTab('Root', new Tab('Carousel', _t('Carousel.CMSTabName', 'Carousel')));
 		
 		$gridfield_config = new GridFieldConfig_RelationEditor(Carousel::config()->get('cms_slides_per_page'));
-		if (ClassInfo::exists('GridFieldSortableRows'))
+		$sortable_rows_class = 'UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows';
+		if (ClassInfo::exists($sortable_rows_class))
 		{
 			//The SortableGridField module is installed - which is nice :)
 			//See: https://github.com/UndefinedOffset/SortableGridField
-			$gridfield_config->addComponent(new GridFieldSortableRows('Sort'));
+			$gridfield_config->addComponent(Injector::inst()->create($sortable_rows_class,['Sort']));
 		}
 		
 		$gridfield = new GridField('CarouselSlides', _t('Carousel.CMSTabName', 'Carousel'), $this->owner->CarouselSlides(), $gridfield_config);
@@ -35,7 +48,7 @@ class CarouselExtension extends DataExtension
 	 * to implement some custom iteration for the carousel slides, you can call $CarouselSlides in your template instead
 	 * of this method.
 	 *
-	 * @return HTMLText
+	 * @return DBHTMLText
 	 */
 	public function Carousel()
 	{
