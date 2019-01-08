@@ -2,11 +2,14 @@
 
 namespace Taitava\SlickCarousel;
 
+use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Convert;
 use SilverStripe\View\Requirements;
 
-class Carousel extends Object
+class Carousel
 {
+	use Configurable;
+	
 	/**
 	 * How many slides to list in a single page in the Carousel tab in the CMS.
 	 *
