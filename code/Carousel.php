@@ -53,8 +53,9 @@ class Carousel extends Object
 		Requirements::javascript('framework/thirdparty/jquery/jquery.min.js');
 		Requirements::javascript('slickcarousel/vendor/slick/slick/slick.min.js');
 		Requirements::javascript('slickcarousel/js/slick-init.js');
+		$eol = PHP_EOL; //Try to make the custom script work in windows servers too. Not sure if this helps though, as I'm not able to test it.
 		Requirements::customScript("
-		//Slick carousel options:
+		//Slick carousel options:$eol
 		var GLOBAL_SLICK_OPTIONS = ".self::options2js().";
 		", 'Define Slick options only once, please :).'); //The last parameter is a unique script ID. It does not appear anywhere in the frontend or backend.
 	}
