@@ -28,7 +28,7 @@ class CarouselExtension extends DataExtension
 	
 	public function updateCMSFields(FieldList $fields)
 	{
-		$fields->addFieldToTab('Root', new Tab('Carousel', _t('Carousel.CMSTabName', 'Carousel')));
+		$fields->addFieldToTab('Root', new Tab('Carousel', _t('Taitava\SlickCarousel\Carousel.CMSTabName', 'Carousel')));
 		
 		$gridfield_config = new GridFieldConfig_RelationEditor(Carousel::config()->get('cms_slides_per_page'));
 		$sortable_rows_class = 'UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows';
@@ -39,7 +39,7 @@ class CarouselExtension extends DataExtension
 			$gridfield_config->addComponent(Injector::inst()->create($sortable_rows_class,['Sort']));
 		}
 		
-		$gridfield = new GridField('CarouselSlides', _t('Carousel.CMSTabName', 'Carousel'), $this->owner->CarouselSlides(), $gridfield_config);
+		$gridfield = new GridField('CarouselSlides', _t('Taitava\SlickCarousel\Carousel.CMSTabName', 'Carousel'), $this->owner->CarouselSlides(), $gridfield_config);
 		$fields->addFieldToTab('Root.Carousel', $gridfield);
 	}
 	

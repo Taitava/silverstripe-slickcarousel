@@ -46,14 +46,14 @@ class CarouselSlide extends DataObject
 		$labels = parent::fieldLabels($includerelations);
 		
 		return array_merge($labels, array(
-			'Content'		=> _t('CarouselSlide.Content', 'Custom content'),
-			'PlainContent'		=> _t('CarouselSlide.Content', 'Custom content'),
-			'Image'			=> _t('CarouselSlide.Image', 'Image'),
-			'Image.CMSThumbnail'	=> _t('CarouselSlide.Image', 'Image'),
-			'Link'			=> _t('CarouselSlide.Link', 'Link'),
-			'LinkURL'		=> _t('CarouselSlide.LinkURL', 'Link URL'),
-			'LinkPageID'		=> _t('CarouselSlide.LinkPageID', 'Link page'),
-			'LinkTargetBlank'	=> _t('CarouselSlide.LinkTargetBlank', 'Open the link in a new tab'),
+			'Content'		=> _t('Taitava\SlickCarousel\CarouselSlide.Content', 'Custom content'),
+			'PlainContent'		=> _t('Taitava\SlickCarousel\CarouselSlide.Content', 'Custom content'),
+			'Image'			=> _t('Taitava\SlickCarousel\CarouselSlide.Image', 'Image'),
+			'Image.CMSThumbnail'	=> _t('Taitava\SlickCarousel\CarouselSlide.Image', 'Image'),
+			'Link'			=> _t('Taitava\SlickCarousel\CarouselSlide.Link', 'Link'),
+			'LinkURL'		=> _t('Taitava\SlickCarousel\CarouselSlide.LinkURL', 'Link URL'),
+			'LinkPageID'		=> _t('Taitava\SlickCarousel\CarouselSlide.LinkPageID', 'Link page'),
+			'LinkTargetBlank'	=> _t('Taitava\SlickCarousel\CarouselSlide.LinkTargetBlank', 'Open the link in a new tab'),
 		));
 	}
 	
@@ -103,19 +103,19 @@ class CarouselSlide extends DataObject
 		
 		//HTML content field
 		$custom_content_used = '' != $this->Content;
-		$fields->addFieldToTab('Root.Main', $checkbox = new CheckboxField('UseCustomContent', _t('CarouselSlide.UseCustomContent', 'Use custom content'), $custom_content_used));
-		$checkbox->setDescription(_t('CarouselSlide.UseCustomContentDescription','Use this to input any kind of HTML content inside the slide. This can be used alongside with an image, or you can leave out the image and use only the custom content.'));
+		$fields->addFieldToTab('Root.Main', $checkbox = new CheckboxField('UseCustomContent', _t('Taitava\SlickCarousel\CarouselSlide.UseCustomContent', 'Use custom content'), $custom_content_used));
+		$checkbox->setDescription(_t('Taitava\SlickCarousel\CarouselSlide.UseCustomContentDescription','Use this to input any kind of HTML content inside the slide. This can be used alongside with an image, or you can leave out the image and use only the custom content.'));
 		$fields->dataFieldByName('Content')->displayIf('UseCustomContent')->isChecked();
 		$checkbox->addExtraClass('no-change-track'); //Do not alert about 'unsaved work' if the only change in the editor was to check/uncheck this field.
 		
 		//Link fields
 		$current_link_type = ($this->LinkPageID ? 1 : ($this->LinkURL ? 2 : 0));
 		$link_options = array(
-			0 => _t('CarouselSlide.LinkTypeNoLink',	'No link'),
-			1 => _t('CarouselSlide.LinkTypePage',	'Link to a page'),
-			2 => _t('CarouselSlide.LinkTypeURL',	'Link to a custom URL'),
+			0 => _t('Taitava\SlickCarousel\CarouselSlide.LinkTypeNoLink',	'No link'),
+			1 => _t('Taitava\SlickCarousel\CarouselSlide.LinkTypePage',	'Link to a page'),
+			2 => _t('Taitava\SlickCarousel\CarouselSlide.LinkTypeURL',	'Link to a custom URL'),
 		);
-		$fields->addFieldToTab('Root.Main', $link_option_group = new OptionsetField('LinkType', _t('CarouselSlide.LinkType', 'Link'), $link_options, $current_link_type));
+		$fields->addFieldToTab('Root.Main', $link_option_group = new OptionsetField('LinkType', _t('Taitava\SlickCarousel\CarouselSlide.LinkType', 'Link'), $link_options, $current_link_type));
 		$fields->dataFieldByName('LinkURL')->displayIf('LinkType')->isEqualTo(2);
 		$fields->dataFieldByName('LinkPageID')->displayIf('LinkType')->isEqualTo(1);
 		$fields->dataFieldByName('LinkTargetBlank')->displayIf('LinkType')->isNotEqualTo(0);

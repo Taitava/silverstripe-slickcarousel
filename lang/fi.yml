@@ -1,8 +1,8 @@
 fi:
-  Carousel:
+  Taitava\SlickCarousel\Carousel:
     CMSTabName:       'Karuselli'
 
-  CarouselSlide:
+  Taitava\SlickCarousel\CarouselSlide:
     SINGULARNAME:     'Sisältö'
     PLURALNAME:       'Sisällöt'
     Content:          'Vapaamuotoinen sisältö'
