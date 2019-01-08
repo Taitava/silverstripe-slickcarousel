@@ -56,11 +56,11 @@ class Carousel
 	
 	public static function Requirements()
 	{
-		Requirements::css('taitava/slickcarousel: vendor/slick/slick/slick.css');
-		Requirements::css('taitava/slickcarousel: vendor/slick/slick/slick-theme.css');
+		Requirements::css('taitava/silverstripe-slickcarousel: vendor/slick/slick/slick.css');
+		Requirements::css('taitava/silverstripe-slickcarousel: vendor/slick/slick/slick-theme.css');
 		Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.min.js');
-		Requirements::javascript('taitava/slickcarousel: vendor/slick/slick/slick.min.js');
-		Requirements::javascript('taitava/slickcarousel: js/slick-init.js');
+		Requirements::javascript('taitava/silverstripe-slickcarousel: vendor/slick/slick/slick.min.js');
+		Requirements::javascript('taitava/silverstripe-slickcarousel: js/slick-init.js');
 		$eol = PHP_EOL; //Try to make the custom script work in windows servers too. Not sure if this helps though, as I'm not able to test it.
 		Requirements::customScript("
 		//Slick carousel options:$eol
