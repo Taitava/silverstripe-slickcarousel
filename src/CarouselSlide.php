@@ -99,6 +99,8 @@ class CarouselSlide extends DataObject
 		$fields->removeByName(array(
 			'Sort',
 			'ContainerPageID',
+			'FileTracking',
+			'LinkTracking',
 		));
 		
 		//HTML content field
