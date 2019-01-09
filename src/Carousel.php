@@ -51,7 +51,7 @@ class Carousel
 	 *
 	 * @conf array
 	 */
-	private static $slick_options			= array();
+	private static $slick_options			= [];
 	
 	
 	public static function Requirements()

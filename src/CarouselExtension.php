@@ -22,9 +22,9 @@ use SilverStripe\ORM\FieldType\DBHTMLText;
  */
 class CarouselExtension extends DataExtension
 {
-	private static $has_many = array(
+	private static $has_many = [
 		'CarouselSlides' => CarouselSlide::class,
-	);
+	];
 	
 	public function updateCMSFields(FieldList $fields)
 	{
