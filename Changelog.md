@@ -1,3 +1,7 @@
+## 2.0.0
+2019-01-09
+ - Compatibility with SilverStripe 4. If you are using SS3, use the release line 1.x of this module.
+ - No other changes, so the module *should* work just like the version 1.0.1 on SilverStripe 3.
 
 ## 1.0.1
 2019-01-08
