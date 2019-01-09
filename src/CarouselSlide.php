@@ -63,6 +63,10 @@ class CarouselSlide extends DataObject
 		'Link',
 	];
 	
+	private static $casting = [
+		'StyleAttribute' => 'HTMLText',
+	];
+	
 	private static $searchable_fields = [];
 	
 	private static $default_sort = 'Sort ASC';
