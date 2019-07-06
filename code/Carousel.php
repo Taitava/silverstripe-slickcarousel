@@ -1,6 +1,6 @@
 <?php
 
-class Carousel extends Object
+class Carousel extends SS_Object
 {
 	/**
 	 * How many slides to list in a single page in the Carousel tab in the CMS.
