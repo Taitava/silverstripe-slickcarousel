@@ -36,7 +36,7 @@ class CarouselExtension extends DataExtension
 		{
 			//The SortableGridField module is installed - which is nice :)
 			//See: https://github.com/UndefinedOffset/SortableGridField
-			$gridfield_config->addComponent(Injector::inst()->create($sortable_rows_class,['Sort']));
+			$gridfield_config->addComponent(Injector::inst()->create($sortable_rows_class, 'Sort'));
 		}
 		
 		$gridfield = new GridField('CarouselSlides', _t('Taitava\SlickCarousel\Carousel.CMSTabName', 'Carousel'), $this->owner->CarouselSlides(), $gridfield_config);
