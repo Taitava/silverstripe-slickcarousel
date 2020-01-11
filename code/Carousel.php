@@ -1,5 +1,8 @@
 <?php
 
+// Support SilverStripe versions lower than 3.7:
+if (!class_exists('SS_Object')) class_alias('Object', 'SS_Object');
+
 class Carousel extends SS_Object
 {
 	/**
@@ -8,7 +11,7 @@ class Carousel extends SS_Object
 	 * @conf int
 	 */
 	private static $cms_slides_per_page		= 50;
-	
+
 	/**
 	 * Where to place the slide's image inside the carousel slide <div> element:
 	 * - 'background': the image will be used as the <div>'s background-image.
@@ -18,8 +21,8 @@ class Carousel extends SS_Object
 	 * @conf string
 	 */
 	private static $image_placement			= 'background';
-	
-	
+
+
 	/**
 	 * Whether or not to set the slide <div> element's width and/or height to be the same as the image's width and/or
 	 * height. Can be useful when $image_placement is 'background' and you are not using constant dimensions that you
@@ -32,7 +35,7 @@ class Carousel extends SS_Object
 	 * @conf bool
 	 */
 	private static $use_image_dimensions		= false;
-	
+
 	/**
 	 * Options to pass to the Slick jQuery plugin during initialization. With these you can greatly affect the behaviour
 	 * of the carousel in the frontend.
@@ -44,8 +47,8 @@ class Carousel extends SS_Object
 	 * @conf array
 	 */
 	private static $slick_options			= array();
-	
-	
+
+
 	public static function Requirements()
 	{
 		Requirements::css('slickcarousel/vendor/slick/slick/slick.css');
@@ -59,7 +62,7 @@ class Carousel extends SS_Object
 		var GLOBAL_SLICK_OPTIONS = ".self::options2js().";
 		", 'Define Slick options only once, please :).'); //The last parameter is a unique script ID. It does not appear anywhere in the frontend or backend.
 	}
-	
+
 	/**
 	 * Tells whether the slide's image's width should be injected to the slide <div>'s HTML style attribute.
 	 *
@@ -70,7 +73,7 @@ class Carousel extends SS_Object
 		$use_image_dimensions = self::config()->get('use_image_dimensions');
 		return $use_image_dimensions === true || $use_image_dimensions == 'width-only';
 	}
-	
+
 	/**
 	 * Tells whether the slide's image's height should be injected to the slide <div>'s HTML style attribute.
 	 *
@@ -81,7 +84,7 @@ class Carousel extends SS_Object
 		$use_image_dimensions = self::config()->get('use_image_dimensions');
 		return $use_image_dimensions === true || $use_image_dimensions == 'height-only';
 	}
-	
+
 	/**
 	 * Exports Slim specific settings from YAML to JavaScript so that they can be easily used when initialising Slick.
 	 *
@@ -92,7 +95,7 @@ class Carousel extends SS_Object
 		self::validate_options(); //Even if the validation fails, convert and return the options so that the developer can see from the output how the options come out.
 		return Convert::array2json(self::config()->get('slick_options'));
 	}
-	
+
 	/**
 	 * Just checks that the Slick configuration options in YAML is listed in a correct format without preceding dashes
 	 * in option lines. Otherwise the options would render as nested arrays inside the settings array, which would render
